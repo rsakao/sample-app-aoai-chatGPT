@@ -32,14 +32,10 @@ const Chat = () => {
     const abortFuncs = useRef([] as AbortController[]);
     const [showAuthMessage, setShowAuthMessage] = useState<boolean>(true);
     
+    // Disable Authentication
+    // https://github.com/rsakao/sample-app-aoai-chatGPT#add-an-identity-provider
     const getUserInfoList = async () => {
-        const userInfoList = await getUserInfo();
-        if (userInfoList.length === 0 && window.location.hostname !== "127.0.0.1") {
-            setShowAuthMessage(true);
-        }
-        else {
-            setShowAuthMessage(false);
-        }
+      setShowAuthMessage(false);
     }
 
     const makeApiRequest = async (question: string) => {
